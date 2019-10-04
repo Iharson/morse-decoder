@@ -37,10 +37,14 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-function decode(expr) {
-    // write your solution here
-}
+const decode = (expr) => (
+   expr.match(/.{10}/g).map((symbol) => {
+       let codeSymbol = symbol.replace(/10/g, ".").replace(/11/g, "-").replace(/00/g, "");
+       return MORSE_TABLE[codeSymbol] || ' ';
+   })
+       .join('')
+);
 
 module.exports = {
     decode
-}
+};
